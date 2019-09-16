@@ -17,7 +17,7 @@ def main(argv):
     parser = argparse.ArgumentParser(description='Process input arguments.')
     parser.add_argument('-u', metavar='<user>', dest='usr', help='JIRA user name. Required if not set via the env. variable JIRA_USR.')
     parser.add_argument('-p', metavar='<password>', dest = 'pwd', help='JIRA user password. Required if not set via the env. variable JIRA_PWD.')
-    parser.add_argument('-c', metavar='<configFile>', dest='configFile', help='Absolute path to config file. If not present, will look for ./jira2md.conf')
+    parser.add_argument('-c', metavar='<configFile>', dest='config_file', help='Absolute path to config file. If not present, will look for ./jira2md.conf')
 
     # Parse arguments
     args = parser.parse_args()
