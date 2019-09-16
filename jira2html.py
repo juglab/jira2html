@@ -22,6 +22,9 @@ def main(argv):
     # Parse arguments
     args = parser.parse_args()
     
+    if (args.config_file != None):
+        config_file = args.config_file
+    
     if (args.usr == None and args.pwd == None):
         try: 
             usr = os.environ['JIRA_USR']
