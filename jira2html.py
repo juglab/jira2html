@@ -89,7 +89,7 @@ def create_issues_table(jira_url, issues, status_filter):
     
     status = {} 
     if (status_filter == 'True'):
-        status = {'Open':'#E0E0E0', 'In Progress':'#99FFF', 'Selected':'#E0E0E0', 'To Do':'#E0E0E0'} 
+        status = {'Open':'#E0E0E0', 'In Progress':'#B3F0FF', 'Selected':'#E0E0E0', 'To Do':'#E0E0E0'} 
         
     text = \
         '<table border="0" cellpadding="0" cellspacing="1">\n' + \
