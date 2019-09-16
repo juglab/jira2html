@@ -1,0 +1,8 @@
+# Template config file for jira2md.py
+jira_url=                           # URL of your JIRA server
+jira_project=                       # Your JIRA project code
+git_token=                          # Obtained from https://github.com/settings/tokens
+git_repo=                           # yourOrg/yourRepo
+commit_message=                     # Git commit message
+status_filter=True                  # If true shows only open and in progress issues, set to false for all issues
+md_file=                            # git repo path of output file
