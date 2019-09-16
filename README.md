@@ -1,13 +1,13 @@
-# jira2html
+#jira2html
 Automatically output a list of JIRA issues to an HTML table and push them to a git-hub repository. The original target for this exercise was a page to be published to a Wiki.js wiki backed by git.
 
-## Required packages:
+##Required packages:
 
 * [PyGithub](https://github.com/PyGithub/PyGithub): pip install PyGithub
 * [JIRA Python](https://jira.readthedocs.io/en/latest/installation.html): pip install jira
 * [configobj](https://configobj.readthedocs.io/en/latest/configobj.html): pip install configobj
 
-## How to:
+##How to:
 
 * You need have to create a github access token [here](https://github.com/settings/tokens) (Select only 'repo' as scope).
 * You need to provide your JIRA authentication parameters either as the environment variables (JIRA\_USR and JIRA\_PWD]  or as arguments to the script. 
@@ -27,7 +27,7 @@ status_filter=True                  # If true shows only open and in progress is
 md_file=                            # git repo path of output file
 ```
 
-## Usage
+##Usage
 
 ```
 >> jira2html.py [-h] [-u <user>] [-p <password>] [-c <configFile>]
