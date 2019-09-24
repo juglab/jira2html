@@ -46,7 +46,7 @@ def main(argv):
         
     jira_url = config['jira_url']   
     try:    
-        jira = JIRA(jira_url, auth=(usr, pwd))
+        jira = JIRA(jira_url, basic_auth=(usr, pwd))
     except:
         print("Error: JIRA server authentication failed.\n")
         sys.exit(1)
