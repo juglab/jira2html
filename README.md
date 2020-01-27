@@ -5,11 +5,11 @@ Automatically output a list of JIRA issues to an HTML table and push them to a g
 
 * [PyGithub](https://github.com/PyGithub/PyGithub): pip install PyGithub
 * [JIRA Python](https://jira.readthedocs.io/en/latest/installation.html): pip install jira
-* [configobj](https://configobj.readthedocs.io/en/latest/configobj.html): pip install configobj
+* [ConfigObj](https://configobj.readthedocs.io/en/latest/configobj.html): pip install configobj
 
 ## How to:
 
-* You need have to create a github access token [here](https://github.com/settings/tokens) (Select only 'repo' as scope).
+* You need have to create a GitHub access token [here](https://github.com/settings/tokens) (Select only 'repo' as scope).
 * You need to provide your JIRA authentication parameters either as the environment variables (JIRA\_USR and JIRA\_PWD] or as arguments to the script. Note: for a hosted server the "password" will be the user's password, but for a cloud instance this has to be a token, instructions on how to get one are [here](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
 * You need to create a configuration files using the provided template. The script will automatically look for a local configuration file named "jira2html.conf", 
   but you can also use the "-c" command line option to specify an alternative configuration file
@@ -27,8 +27,10 @@ status_filter=True                  # If true shows only open and in progress is
 md_file=                            # git repo path of output file
 ```
 
+A configuration file template is included in the repository. To use rename to jira2html.conf and fill in.
+
 ## Usage
 
 ```
->> jira2html.py [-h] [-u <user>] [-p <password>] [-c <configFile>]
+>> python jira2html.py [-u <user>] [-p <password>] [-c <configFile>]
 ```
