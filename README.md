@@ -20,6 +20,8 @@ The configuration file must contain:
 # Template config file for jira2md.py
 jira_url=                           # URL of your JIRA server
 jira_project=                       # Your JIRA project code
+jira_usr=                           # Your JIRA username
+jira_token=                         # Your JIRA API access token
 git_token=                          # Obtained from https://github.com/settings/tokens
 git_repo=                           # yourOrg/yourRepo
 commit_message=                     # Git commit message

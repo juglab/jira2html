@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse
 import os
 import datetime
@@ -15,8 +16,6 @@ def main(argv):
     
     # Set up argument parser (none required)
     parser = argparse.ArgumentParser(description='Process input arguments.')
-    parser.add_argument('-u', metavar='<user>', dest='usr', help='JIRA user name. Required if not set via the env. variable JIRA_USR.')
-    parser.add_argument('-p', metavar='<password>', dest = 'pwd', help='JIRA user password. Required if not set via the env. variable JIRA_PWD.')
     parser.add_argument('-c', metavar='<config_file>', dest='config_file', help='Absolute path to config file. If not present, will look for ./jira2html.conf')
 
     # Parse arguments
@@ -25,19 +24,6 @@ def main(argv):
     if (args.config_file != None):
         config_file = args.config_file
     
-    if (args.usr == None and args.pwd == None):
-        try: 
-            usr = os.environ['JIRA_USR']
-            pwd = os.environ['JIRA_PWD']
-        except:
-            print("Error: server authentication information (user and/or password) is missing.\n")
-            parser.print_help()
-            sys.exit(1)
-    else:
-        usr = args.usr
-        pwd = args.pwd
-        
-        
     # Read config file
     try:
         config = ConfigObj(config_file)
@@ -45,8 +31,10 @@ def main(argv):
         print("Error: config file not found or unreadable.\n")
         
     jira_url = config['jira_url']   
+    jira_usr = config['jira_usr']
+    jira_token = config['jira_token']
     try:    
-        jira = JIRA(jira_url, basic_auth=(usr, pwd))
+        jira = JIRA(jira_url, basic_auth=(jira_usr, jira_token))
     except:
         print("Error: JIRA server authentication failed.\n")
         sys.exit(1)
