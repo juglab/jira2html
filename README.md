@@ -10,7 +10,7 @@ Automatically output a list of JIRA issues to an HTML table and push them to a g
 ## How to:
 
 * You need have to create a GitHub access token [here](https://github.com/settings/tokens) (Select only 'repo' as scope).
-* You need to provide your JIRA authentication parameters either as the environment variables (JIRA\_USR and JIRA\_PWD] or as arguments to the script. Note: for a hosted server the "password" will be the user's password, but for a cloud instance this has to be a token, instructions on how to get one are [here](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
+* If you are using a cloud instance of JIRA you will need an access token. Instructions on how to get one are [here](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
 * You need to create a configuration files using the provided template. The script will automatically look for a local configuration file named "jira2html.conf", 
   but you can also use the "-c" command line option to specify an alternative configuration file
 
@@ -21,7 +21,7 @@ The configuration file must contain:
 jira_url=                           # URL of your JIRA server
 jira_projects=                       # Your JIRA project code(s) comma delimited
 jira_usr=                           # Your JIRA username
-jira_token=                         # Your JIRA API access token
+jira_token=                         # Your JIRA API access token (if cloud instance) or password (if self hosted)
 git_token=                          # Obtained from https://github.com/settings/tokens
 git_repo=                           # yourOrg/yourRepo
 commit_message=                     # Git commit message

@@ -2,7 +2,7 @@
 jira_url=                           # URL of your JIRA server
 jira_projects=                      # Your JIRA project code(s) comma delimited
 jira_usr=                           # Your JIRA username
-jira_token=                         # Your JIRA API access token
+jira_token=                         # Your JIRA API access token (if cloud instance) or password (if self hosted)
 git_token=                          # Obtained from https://github.com/settings/tokens
 git_repo=                           # yourOrg/yourRepo
 commit_message=                     # Git commit message
