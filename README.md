@@ -1,4 +1,4 @@
-# jira2html
+Your JIRA project code(s) comma delimited# jira2html
 Automatically output a list of JIRA issues to an HTML table and push them to a git-hub repository. The original target for this exercise was a page to be published to a Wiki.js wiki backed by git.
 
 ## Required packages:
@@ -19,7 +19,7 @@ The configuration file must contain:
 ```
 # Template config file for jira2md.py
 jira_url=                           # URL of your JIRA server
-jira_project=                       # Your JIRA project code
+jira_projects=                       # Your JIRA project code(s) comma delimited
 jira_usr=                           # Your JIRA username
 jira_token=                         # Your JIRA API access token
 git_token=                          # Obtained from https://github.com/settings/tokens
@@ -34,5 +34,5 @@ A configuration file template is included in the repository. To use rename to ji
 ## Usage
 
 ```
->> python jira2html.py [-u <user>] [-p <password>] [-c <configFile>]
+>> python jira2html.py [-c <configFile>]
 ```

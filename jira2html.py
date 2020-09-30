@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import argparse
-import os
 import datetime
 import sys
 from jira import JIRA
@@ -39,10 +38,15 @@ def main(argv):
         print("Error: JIRA server authentication failed.\n")
         sys.exit(1)
     
-    issues = jira.search_issues('project="' + config['jira_project'] + '"',maxResults=0)
-    issues.sort(key=lambda x: x.key, reverse=True)
+    projects = [x.strip() for x in config['jira_projects'].split(',')]
     
-    issues_table = create_issues_table(jira_url, issues, config['status_filter'])
+    issues_table = ''
+    
+    for project in projects:
+    
+        issues = jira.search_issues('project="' + project + '"',maxResults=0)
+        issues.sort(key=lambda x: x.key, reverse=True)
+        issues_table = issues_table + create_issues_table(project, jira_url, issues, config['status_filter'])
     
     # Connect to git repo
     try:
@@ -52,6 +56,7 @@ def main(argv):
         sys.exit(1)
         
     repo = g.get_repo(config['git_repo'])
+    
     
     # Push changes to git
     try:
@@ -76,7 +81,7 @@ def main(argv):
     print("Update pushed, all done!")
         
                 
-def create_issues_table(jira_url, issues, status_filter):
+def create_issues_table(project, jira_url, issues, status_filter):
     
     status = {'Open':'#E0E0E0', 'In Progress':'#B3F0FF', 'Selected':'#E0E0E0', 'To Do':'#E0E0E0', 'Done':'#009A00', 'Resolved':'#009A00'}
     if (status_filter == 'True'):
@@ -85,6 +90,9 @@ def create_issues_table(jira_url, issues, status_filter):
     text = \
         '<table border="0" cellpadding="0" cellspacing="1">\n' + \
         '<theader>\n' + \
+        '    <tr align="center" style="background-color: #60a9a9;" valign="middle">\n' + \
+        '        <td colspan="4">PROJECT: ' + project + '</td>\n' + \
+        '    </tr>\n' + \
         '    <tr align="center" style="background-color: #60a9a9;" valign="middle">\n' + \
         '        <td>ISSUE</td>\n' + \
         '        <td>SUMMARY</td>\n' + \
@@ -106,7 +114,7 @@ def create_issues_table(jira_url, issues, status_filter):
         '    </tr>\n'
         
     text +=    '</tbody>\n' + \
-        '</table>\n'
+        '</table>\n\n'
     return text
 
                 
